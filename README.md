@@ -88,7 +88,6 @@ By combining Docker for containerized databases and dbt for transformations, thi
   ```bash
     python -m venv dbt-env
     dbt-env\Scripts\activate
-    pip install dbt-core==1.6.2 dbt-postgres==1.6.2
   ```
 
 3. Navigate to the project directory and run the Docker environment:
@@ -96,32 +95,26 @@ By combining Docker for containerized databases and dbt for transformations, thi
     docker-compose up
   ```
 
-4. Execute the ELT Python script:
-
-  ```bash
-    python elt/elt_script.py
-  ```
-
-5. Use dbt to run transformations:
+4. Use dbt to run transformations:
 
   ```bash
     cd custom_postgres
     dbt run
   ```
 
-6. Access the destination PostgreSQL container:
+5. Access the destination PostgreSQL container:
 
   ```bash
     docker exec -it dbt_end_to_end_pipeline-destination_postgres-1 psql -U postgres destination_db
   ```
 
-7. Run SQL queries to verify data:
+6. Run SQL queries to verify data:
 
   ```bash
     select * from actors;
   ```
 
-8. Shut down Docker containers and remove volumes:
+7. Shut down Docker containers and remove volumes:
   ```bash
      docker-compose down -v
   ```
